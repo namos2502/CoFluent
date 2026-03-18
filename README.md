@@ -5,7 +5,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-namos2502%2FCoFluent-181717?logo=github)](https://github.com/namos2502/CoFluent)
 
-CoFluent is a Claude Code plugin that teaches Claude how to speak Copilot CLI — so when you need `copilot -p` invoked correctly, Claude already knows the flags, the permissions, and the patterns. No doc-diving, no flag guessing.
+You know the feeling. You are deep in a vibe coding session — ideas flowing, Claude keeping up — and then you need to hand something off to Copilot. Suddenly you are out of the zone, hunting for the right flags, checking docs, figuring out what `--allow-tool` even accepts. The flow breaks.
+
+CoFluent fixes that.
+
+It is a Claude Code skill plugin that gives Claude the full GitHub Copilot CLI reference — flags, permissions, patterns, model choices — baked right in. Install it once, and Claude already knows how to speak Copilot. No interruptions, no setup tax, no context switching. You stay in the zone and Claude handles the handoff.
+
+The way it should work.
 
 ## Get it
 
