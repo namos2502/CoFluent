@@ -57,6 +57,7 @@ Once installed, the following commands are available inside Claude Code:
 
 | Command | Description |
 |---------|-------------|
+| `/cofluent:auto` | Activate autonomous Copilot CLI mode for the session |
 | `/cofluent:verify` | Verify Copilot CLI is installed and authenticated |
 | `/cofluent:ask` | Ask Copilot a question (read-only, fast) |
 | `/cofluent:suggest` | Get a shell command suggestion |
@@ -66,6 +67,14 @@ Once installed, the following commands are available inside Claude Code:
 | `/cofluent:help` | Show command reference |
 
 > Commands are namespaced as `/cofluent:*` when installed as a plugin. If you copy the files directly to `~/.claude/commands/`, they are available without the namespace (e.g., `/ask`, `/fix`).
+
+## Modes
+
+CoFluent supports two usage modes:
+
+**Autonomous** — run `/cofluent:auto` once at the start of a session. Claude loads the Copilot CLI reference into context and will automatically invoke `copilot -p` whenever it's appropriate, without you needing to ask.
+
+**Explicit** — use individual commands (`/cofluent:ask`, `/cofluent:fix`, etc.) to directly delegate a specific task to Copilot. Good for when you want deliberate, targeted control.
 
 ## How it works
 

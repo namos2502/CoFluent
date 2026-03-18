@@ -8,6 +8,7 @@ Initial beta release. Core plugin structure is stable; commands and skill refere
 
 ### Added
 - `skills/copilot-cli/SKILL.md` — core programmatic reference for the GitHub Copilot CLI; auto-loaded by Claude when invoking `copilot -p`
+- `/cofluent:auto` — activates autonomous Copilot CLI mode for the session; Claude will invoke `copilot -p` automatically when appropriate
 - `/cofluent:verify` — checks that Copilot CLI is installed and authenticated; guides the user through fixing any issues
 - `/cofluent:ask` — delegates a question to Copilot (read-only, fast, uses `claude-haiku-4.5`)
 - `/cofluent:suggest` — asks Copilot to suggest a shell command for a task

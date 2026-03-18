@@ -6,6 +6,7 @@ Show the user the copilot-cli skill reference, then list these available slash c
 
 | Command | What it does | Example |
 |---------|-------------|---------|
+| `/cofluent:auto` | Activate autonomous Copilot CLI mode for the session | `/cofluent:auto` |
 | `/cofluent:verify` | Verify Copilot CLI is installed and authenticated | `/cofluent:verify` |
 | `/cofluent:ask` | Ask Copilot any question | `/cofluent:ask how do I reverse a string in bash?` |
 | `/cofluent:suggest` | Get a shell command suggestion | `/cofluent:suggest delete all node_modules recursively` |
