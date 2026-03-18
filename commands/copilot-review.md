@@ -1,15 +1,8 @@
 ---
-description: "Ask GitHub Copilot to review staged changes or a specific file"
+description: "Ask Copilot to review code — pass a file path or leave empty for staged diff"
+argument-hint: "[file path or empty for staged diff]"
 ---
 
-If $ARGUMENTS is a file path, run:
+Using the copilot-cli skill as reference, run `copilot -p` with the /review agent pattern.
 
-```bash
-copilot -p "/review $ARGUMENTS — focus on bugs, logic errors, and security issues." -s --no-ask-user --no-auto-update --no-color --allow-tool='shell(git:*)'
-```
-
-Otherwise run:
-
-```bash
-copilot -p "/review the changes on this branch compared to main. Focus on bugs and security issues." -s --no-ask-user --no-auto-update --no-color --allow-tool='shell(git:*)'
-```
+Scope: $ARGUMENTS

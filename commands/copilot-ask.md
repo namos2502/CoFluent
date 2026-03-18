@@ -1,9 +1,8 @@
 ---
-description: "Ask GitHub Copilot a question in plain English"
+description: "Ask GitHub Copilot a question using copilot -p (read-only, fast)"
+argument-hint: "<your question>"
 ---
 
-Run the following command and show the user the output:
+Using the copilot-cli skill as reference, run `copilot -p` with the read-only, fast pattern to answer:
 
-```bash
-copilot -p "$ARGUMENTS" -s --no-ask-user --no-auto-update --no-color --allow-tool='read' --model=claude-haiku-4.5
-```
+$ARGUMENTS

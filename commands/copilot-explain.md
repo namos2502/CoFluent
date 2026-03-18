@@ -1,9 +1,8 @@
 ---
-description: "Ask GitHub Copilot to explain a shell command or code snippet"
+description: "Ask Copilot to explain a command, error, or snippet"
+argument-hint: "<command or code to explain>"
 ---
 
-Run the following command and show the user the output:
+Using the copilot-cli skill as reference, run `copilot -p` with the explain pattern for:
 
-```bash
-copilot -p "Explain this command in plain English, breaking down each flag: $ARGUMENTS" -s --no-ask-user --no-auto-update --no-color --model=claude-haiku-4.5
-```
+$ARGUMENTS

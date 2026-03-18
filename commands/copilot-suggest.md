@@ -1,9 +1,8 @@
 ---
-description: "Ask GitHub Copilot to suggest a shell command for a task"
+description: "Ask Copilot to suggest a shell command for a task"
+argument-hint: "<task description>"
 ---
 
-Run the following command and show the user the output:
+Using the copilot-cli skill as reference, run `copilot -p` with the suggest-a-shell-command pattern for:
 
-```bash
-copilot -p "Suggest a shell command to: $ARGUMENTS. Show only the command and a one-line explanation." -s --no-ask-user --no-auto-update --no-color --model=claude-haiku-4.5
-```
+$ARGUMENTS

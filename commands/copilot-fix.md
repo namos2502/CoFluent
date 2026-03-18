@@ -1,9 +1,8 @@
 ---
-description: "Ask GitHub Copilot to fix an error or bug"
+description: "Ask Copilot to fix a bug or error (can read and write files)"
+argument-hint: "<error message or bug description>"
 ---
 
-Run the following command and show the user the output:
+Using the copilot-cli skill as reference, run `copilot -p` with the fix pattern (write permissions, full tool access) for:
 
-```bash
-copilot -p "Fix this error or problem: $ARGUMENTS. Show what to change and why." -s --no-ask-user --no-auto-update --no-color --allow-tool='write, shell(git:*), shell(npm run:*), read'
-```
+$ARGUMENTS
