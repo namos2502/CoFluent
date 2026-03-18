@@ -57,6 +57,7 @@ Once installed, the following commands are available inside Claude Code:
 
 | Command | Description |
 |---------|-------------|
+| `/cofluent:verify` | Verify Copilot CLI is installed and authenticated |
 | `/cofluent:ask` | Ask Copilot a question (read-only, fast) |
 | `/cofluent:suggest` | Get a shell command suggestion |
 | `/cofluent:explain` | Explain a command, error, or snippet |
