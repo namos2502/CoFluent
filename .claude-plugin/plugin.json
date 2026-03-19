@@ -1,12 +1,12 @@
 {
-  "name": "cofluent",
-  "description": "Teaches Claude the GitHub Copilot CLI programmatic reference so it can invoke copilot -p fluently",
+  "name": "xflow",
+  "description": "Cross-agent workflow plugin — gives your agent the full programmatic reference for every CLI tool you use. One plugin. Every CLI. Stay in flow.",
   "version": "1.0.0",
   "author": {
-    "name": "nunu"
+    "name": "namos2502"
   },
-  "homepage": "https://github.com/nunu/cofluent",
-  "repository": "https://github.com/nunu/cofluent",
+  "homepage": "https://github.com/namos2502/xFlow",
+  "repository": "https://github.com/namos2502/xFlow",
   "license": "MIT",
-  "keywords": ["copilot", "github-copilot", "cli", "skills", "reference"]
+  "keywords": ["copilot", "github-copilot", "claude", "cli", "skills", "reference", "multi-agent"]
 }
