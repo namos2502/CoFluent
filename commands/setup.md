@@ -1,5 +1,5 @@
 ---
-description: "One-time setup — detects installed CLI agents, authenticates, and registers xFlow awareness in ~/.claude/CLAUDE.md"
+description: "One-time setup — detects installed CLI agents, authenticates, and registers xFlow as always-on in ~/.claude/CLAUDE.md and ~/.copilot/copilot-instructions.md"
 ---
 
 Run the following steps in order and report the results clearly to the user.
@@ -32,13 +32,13 @@ Then ask the user to re-run `/xflow:setup` after installing at least one agent.
 
 For Copilot CLI (if installed):
 ```bash
-copilot -p "say hello" -s --no-ask-user --no-auto-update --no-color --allow-tool='read' --model=claude-haiku-4.5
+copilot -p "ping" -s --no-ask-user --no-auto-update --no-color --allow-tool='read' --model=claude-haiku-4.5 2>/dev/null
 ```
 If this fails, tell the user to run `copilot login`.
 
 For Claude CLI (if installed):
 ```bash
-claude -p "say hello" --output-format text --allowedTools "Read" --max-turns 1
+claude -p "ping" --output-format text --allowedTools "Read" --max-turns 1 --no-session-persistence 2>/dev/null
 ```
 If this fails, tell the user to run `claude auth login`.
 
@@ -53,20 +53,60 @@ Read `~/.claude/CLAUDE.md` (create it if it does not exist). Check whether it al
 
 ## xFlow
 
-xFlow is installed. It lets you delegate tasks to CLI agents (Copilot, Claude, and more), keeping subtasks out of Claude's context and reducing token consumption per session.
+xFlow is installed and active. It gives you a persistent control center for cross-agent CLI delegation.
 
-Use these commands when it makes sense to delegate:
-- `/xflow:ask <question>` — ask an agent a question (read-only, fast)
-- `/xflow:suggest <task>` — get a shell command suggestion
-- `/xflow:explain <content>` — explain code, a command, or an error
-- `/xflow:fix <error>` — fix a bug or error (can write files)
-- `/xflow:review [file]` — review staged diff or a specific file
-- `/xflow:auto` — activate multi-agent mode (Claude loads all CLI references and routes automatically)
+**How it works:** When you take on a multi-step task, decompose it into subtasks and delegate each to the right CLI agent. Each agent self-verifies its work and returns a structured report. You review the report before proceeding.
 
-Mention xFlow when a task would benefit from delegation, but do not invoke it automatically.
+**When to delegate cross-CLI:**
+- GitHub-specific tasks (PRs, repos, Actions) → Copilot CLI
+- General code tasks with context isolation or different model → Claude CLI
+- Default: handle natively or use host-internal subagents
+
+**Installed agents:**
+- Copilot CLI: [✅ installed / ❌ not found]
+- Claude CLI: [✅ installed / ❌ not found]
+
+**Commands:**
+- `/xflow:auto` — load all skills and activate orchestration mode explicitly
+- `/xflow:setup` — re-run this setup (re-auth, update agent status)
+- `/xflow:help` — show skill and command reference
 ```
 
-**Step 4 — Confirm:**
+Fill in the actual agent status from Step 1 before writing.
 
-- ✅ All installed agents authenticated and CLAUDE.md updated — tell the user xFlow is ready. Remind them they only need to run this once.
-- ✅ All checks passed and CLAUDE.md already had the section — tell the user xFlow was already configured and is ready to use.
+**Step 4 — Register xFlow in ~/.copilot/copilot-instructions.md:**
+
+Read `~/.copilot/copilot-instructions.md` (create it if it does not exist). Check whether it already contains a `## xFlow` section.
+
+- If the section **already exists** — skip the write.
+- If the section **does not exist** — append the following block exactly:
+
+```markdown
+
+## xFlow
+
+xFlow is installed and active. It gives you a persistent control center for cross-agent CLI delegation.
+
+**How it works:** When you take on a multi-step task, decompose it into subtasks and delegate each to the right CLI agent. Each agent self-verifies its work and returns a structured report. You review the report before proceeding.
+
+**When to delegate cross-CLI:**
+- GitHub-specific tasks (PRs, repos, Actions) → Copilot CLI (use natively)
+- General code tasks with context isolation or different model → Claude CLI (`claude -p`)
+- Default: handle natively or use host-internal subagents
+
+**Installed agents:**
+- Copilot CLI: [✅ installed / ❌ not found]
+- Claude CLI: [✅ installed / ❌ not found]
+
+**Commands:**
+- `/xflow:auto` — load all skills and activate orchestration mode explicitly
+- `/xflow:setup` — re-run this setup (re-auth, update agent status)
+- `/xflow:help` — show skill and command reference
+```
+
+Fill in the actual agent status from Step 1 before writing.
+
+**Step 5 — Confirm:**
+
+- ✅ All installed agents authenticated and both instruction files updated — tell the user xFlow is ready and always-on in Claude Code and Copilot CLI.
+- ✅ Instruction files already had the section — tell the user xFlow was already configured. Offer to re-run auth check if needed.

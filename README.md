@@ -9,15 +9,32 @@ You know the feeling. You are deep in a vibe coding session — ideas flowing, y
 
 xFlow fixes that.
 
-Introducing **xFlow** — a cross-agent workflow plugin for your AI agent's CLI. It gives your agent the full programmatic reference for every CLI tool you use — flags, permissions, patterns, model choices — baked right in. Install it once, and your agent already knows how to speak Copilot, Claude CLI, and more. No interruptions, no setup tax, no context switching. You stay in the zone and the handoff happens automatically.
+**xFlow** is a cross-agent orchestration plugin for your AI agent CLI. It turns your active CLI into a persistent **control center** that can decompose tasks, delegate subtasks to other CLI agents, and manage the full workflow — while you stay focused on what you're building.
 
-The way it should work.
+## How it works
+
+xFlow uses a **Control Center → Manager → Engineer** model:
+
+```
+CONTROL CENTER (your active CLI)
+  └── MANAGER (CLI agent — optional, for complex subtasks)
+        └── ENGINEER (CLI agent — executes, self-verifies, reports)
+```
+
+- The **control center** holds the plan, dispatches subtasks, reviews reports, and tracks state
+- Each delegated agent **self-verifies its own work** before reporting back
+- Every agent returns a **structured report** (~150 words: status, steps, files changed, issues)
+- The final result returns to your context via stdout — intermediate work stays isolated
+
+No context bloat. No manual coordination. The workflow just happens.
 
 ## Why xFlow
 
-**Stay in flow.** No context switching, no flag hunting, no setup tax. Your agent already knows the programmatic reference for every supported CLI — baked right in.
+**Stay in flow.** Your active CLI knows how to route tasks, which agent to use, and how to handle the results — without you managing it.
 
-**Reduce your token spend.** Every delegated task runs in a separate subprocess — only the final answer comes back into context. No reasoning chains, no intermediate tool calls. Your context stays lean and your quota goes further.
+**Reduce your token spend.** Every delegated subtask runs in a separate subprocess. Only the final report comes back into your context — no reasoning chains, no intermediate tool calls.
+
+**Extend without friction.** Adding a new CLI agent = drop a `skills/agents/<name>/SKILL.md` file. No other changes needed.
 
 ## Get started
 
@@ -49,7 +66,7 @@ Then run setup once:
 /xflow:setup
 ```
 
-This detects which CLI agents are installed, verifies authentication, and registers xFlow awareness in your `~/.claude/CLAUDE.md` so it's available in every future session.
+This detects which CLI agents are installed, verifies authentication, and registers xFlow in your `~/.claude/CLAUDE.md` so it's active in every future session — no need to run anything again.
 
 Requires Claude Code v1.0.33+.
 
@@ -57,39 +74,39 @@ Requires Claude Code v1.0.33+.
 
 | Command | What it does |
 |---------|-------------|
-| `/xflow:setup` | One-time setup — detects installed agents, authenticates, and registers xFlow in your `~/.claude/CLAUDE.md` |
-| `/xflow:auto` | Activates multi-agent mode — loads all CLI references and routes tasks automatically |
-| `/xflow:ask` | Delegates a question to the best available agent |
-| `/xflow:suggest` | Gets a shell command suggestion |
-| `/xflow:explain` | Explains a command, error, or snippet |
-| `/xflow:fix` | Fixes a bug or error (reads and writes files) |
-| `/xflow:review` | Reviews staged diff or a specific file |
-| `/xflow:help` | Shows this reference |
-
-### Pick your style
-
-**Hands-off** — run `/xflow:auto` once and let your agent decide when to reach for which CLI. Good for longer sessions where you just want things to work.
-
-**Hands-on** — use individual commands to point your agent at a specific task. You stay in control of every delegation.
+| `/xflow:setup` | One-time setup — detects agents, authenticates, registers xFlow as always-on in `~/.claude/CLAUDE.md` |
+| `/xflow:auto` | Explicitly load all skills and activate orchestration mode for this session |
+| `/xflow:help` | Show skill and command reference |
 
 ## Under the hood
 
-xFlow uses a skill-per-agent architecture. Each supported CLI tool ships its own skill file loaded as a programmatic reference:
+xFlow uses a skill-per-concern architecture:
 
-- `skills/copilot-cli/SKILL.md` — GitHub Copilot CLI reference
-- `skills/claude-cli/SKILL.md` — Claude CLI reference
-
-`/xflow:auto` loads all available skill files for the session, giving your agent the full picture of every CLI at its disposal.
-
-The base Copilot pattern:
-```bash
-copilot -p "..." -s --no-ask-user --no-auto-update --no-color --allow-tool='read'
+```
+skills/
+  orchestration/
+    SKILL.md          ← control center protocol, routing decision tree, report format
+  agents/
+    copilot-cli/
+      SKILL.md        ← Copilot CLI behavioral reference
+    claude-cli/
+      SKILL.md        ← Claude CLI behavioral reference
+    [future-agent]/   ← drop here to add a new agent
+      SKILL.md
 ```
 
-The base Claude pattern:
-```bash
-claude -p "..." --output-format text --allowedTools "Read"
-```
+After `/xflow:setup`, the `~/.claude/CLAUDE.md` block makes xFlow always-on — the orchestration protocol activates automatically every session. `/xflow:auto` is available as an explicit override if needed.
+
+## Routing
+
+The orchestration skill teaches your CLI when and how to delegate:
+
+| Task type | Route to |
+|-----------|---------|
+| GitHub-specific (PRs, repos, Actions) | Copilot CLI |
+| General code tasks, Anthropic-native reasoning | Claude CLI |
+| Needs current session context or open files | Handle natively |
+| Host has a native subagent for it | Use it (faster, no auth needed) |
 
 ## Supported agents
 

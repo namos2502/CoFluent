@@ -1,16 +1,25 @@
 ---
-description: "Show xFlow commands and the programmatic flag reference for all supported CLI agents"
+description: "Show xFlow commands and skill reference"
 ---
 
-Show the user the available skill references (copilot-cli and claude-cli), then list these available slash commands:
+Show the user the xFlow skill structure and available commands:
 
-| Command | What it does | Example |
-|---------|-------------|---------|
-| `/xflow:auto` | Activate multi-agent mode — Claude loads all CLI references and routes automatically | `/xflow:auto` |
-| `/xflow:setup` | Verify CLI agents are installed and authenticated | `/xflow:setup` |
-| `/xflow:ask` | Delegate a question to the best available agent | `/xflow:ask how do I reverse a string in bash?` |
-| `/xflow:suggest` | Get a shell command suggestion | `/xflow:suggest delete all node_modules recursively` |
-| `/xflow:explain` | Explain a command or snippet | `/xflow:explain git rebase -i HEAD~3` |
-| `/xflow:fix` | Fix an error or bug | `/xflow:fix permission denied running npm install` |
-| `/xflow:review` | Review staged diff or a file | `/xflow:review` or `/xflow:review src/index.ts` |
-| `/xflow:help` | Show this reference | `/xflow:help` |
+## Skills (auto-loaded when plugin is installed)
+
+| Skill | What it does |
+|-------|-------------|
+| `skills/orchestration/SKILL.md` | Control center protocol — routing, delegation, report format, self-verify loop |
+| `skills/agents/copilot-cli/SKILL.md` | Copilot CLI behavioral reference — when to use, flags, invocation patterns |
+| `skills/agents/claude-cli/SKILL.md` | Claude CLI behavioral reference — when to use, flags, invocation patterns |
+
+## Commands
+
+| Command | What it does |
+|---------|-------------|
+| `/xflow:setup` | One-time setup — detect agents, authenticate, register xFlow in `~/.claude/CLAUDE.md` |
+| `/xflow:auto` | Explicitly load all skills and activate orchestration mode for this session |
+| `/xflow:help` | Show this reference |
+
+## Adding a new agent
+
+Drop a `skills/agents/<name>/SKILL.md` file following the existing agent format. No other changes needed.

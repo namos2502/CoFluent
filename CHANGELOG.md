@@ -2,10 +2,32 @@
 
 All notable changes to xFlow will be documented here.
 
+## [0.5.0-beta]
+
+### Changed — Breaking
+- **Architecture:** Complete redesign from passive flag-reference plugin to active control center orchestration system
+- **Skills restructured:** `skills/copilot-cli/` and `skills/claude-cli/` replaced by `skills/orchestration/` (control center protocol) and `skills/agents/copilot-cli/` + `skills/agents/claude-cli/` (behavioral agent skills)
+- **Commands trimmed:** Removed `ask`, `fix`, `explain`, `suggest`, `review` — the orchestration skill handles routing automatically. Kept `setup`, `auto`, `help`.
+- **`/xflow:auto`** repurposed: from "primary activation" to "explicit session override" — after `/xflow:setup`, xFlow is always-on via `~/.claude/CLAUDE.md`
+- **`/xflow:setup`** now registers xFlow in both `~/.claude/CLAUDE.md` and `~/.copilot/copilot-instructions.md` — always-on in Claude Code and Copilot CLI
+
+### Added
+- `skills/orchestration/SKILL.md` — control center protocol: routing decision tree, delegation prompt template, structured report format, self-verify loop, error handling, cross-agent chaining, recursion guard
+- `skills/agents/copilot-cli/SKILL.md` — behavioral reference: when to use, flags, invocation patterns
+- `skills/agents/claude-cli/SKILL.md` — behavioral reference: when to use, flags, model selection, key differences from Copilot CLI
+- **Control Center model** — host CLI acts as persistent orchestrator; agents execute → self-verify → report back
+- **Structured report format** — every agent returns `STATUS / SUMMARY / STEPS / FILES / ISSUES` (~150 words)
+- **Self-verify before reporting** — agents must verify their own work before returning ✅
+- **Manager tier** — agents can internally orchestrate sub-agents, returning one unified report
+- **Recursion guard** — max 2 levels of cross-CLI delegation below the control center
+- **Extensible agent architecture** — `skills/agents/<name>/SKILL.md` pattern; drop a folder to add a new agent
+
+---
+
 ## [0.4.0-beta] — 2026-03-19
 
 ### Added
-- `skills/claude-cli/SKILL.md` — programmatic reference for the Claude CLI; covers `claude -p` flags, tool permission syntax (`--allowedTools`, `--disallowedTools`, `--tools`), model selection, budget caps, and common invocation patterns for ask/suggest/explain/fix/review tasks
+- `skills/claude-cli/SKILL.md` — programmatic reference for the Claude CLI; covers `claude -p` flags, tool permission syntax (`--allowedTools`, `--disallowedTools`, `--tools`), model selection, budget caps, and common invocation patterns
 - `/xflow:auto` now loads both `copilot-cli` and `claude-cli` skill references; includes routing guidance (Copilot for GitHub tasks, Claude for general code tasks)
 - `/xflow:setup` now detects and authenticates both Copilot CLI and Claude CLI; CLAUDE.md block updated to describe both agents
 - `/xflow:help` now shows commands in a multi-agent context
