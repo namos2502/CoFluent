@@ -1,25 +1,28 @@
 ---
-description: "Show xFlow commands and skill reference"
+description: "Show xFlow plugin information and how to get started"
 ---
 
-Show the user the xFlow skill structure and available commands:
+Show the user this information about xFlow:
 
-## Skills (auto-loaded when plugin is installed)
+---
 
-| Skill | What it does |
-|-------|-------------|
-| `skills/orchestration/SKILL.md` | Control center protocol — routing, delegation, report format, self-verify loop |
-| `skills/agents/copilot-cli/SKILL.md` | Copilot CLI behavioral reference — when to use, flags, invocation patterns |
-| `skills/agents/claude-cli/SKILL.md` | Claude CLI behavioral reference — when to use, flags, invocation patterns |
+## xFlow
+
+One plugin. Every CLI. Stay in flow.
+
+xFlow turns your active AI agent into a **control center** that decomposes tasks and delegates to peer CLI agents (Copilot CLI, Claude CLI). Each agent self-verifies its work and returns a structured report. No context bloat. No manual coordination.
+
+## Get started
+
+| Step | Command |
+|------|---------|
+| 1. One-time setup — detect agents, authenticate, register xFlow | `/xflow:setup` |
+| 2. Activate multi-agent mode for this session | `/xflow:auto` |
 
 ## Commands
 
 | Command | What it does |
 |---------|-------------|
-| `/xflow:setup` | One-time setup — detect agents, authenticate, register xFlow in `~/.claude/CLAUDE.md` |
-| `/xflow:auto` | Explicitly load all skills and activate orchestration mode for this session |
-| `/xflow:help` | Show this reference |
-
-## Adding a new agent
-
-Drop a `skills/agents/<name>/SKILL.md` file following the existing agent format. No other changes needed.
+| `/xflow:setup` | Detect CLI agents, verify auth, register xFlow as always-on |
+| `/xflow:auto` | Load all skills and activate orchestration mode for this session |
+| `/xflow:help` | Show this information |
