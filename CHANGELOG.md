@@ -2,7 +2,15 @@
 
 All notable changes to xFlow will be documented here.
 
-## [0.5.1] — 2026-03-21
+## [0.5.2] — 2026-03-21
+
+### Added
+- `/xflow:auto` now checks both `~/.claude/CLAUDE.md` and `~/.copilot/copilot-instructions.md` for the `## xFlow` section before activating — blocks if neither is set up, warns if only one is present
+
+### Fixed
+- `/xflow:auto` no longer activates silently when setup hasn't been run
+
+
 
 ### Added
 - `/xflow:cleanup` — removes the `## xFlow` sections from `~/.claude/CLAUDE.md` and `~/.copilot/copilot-instructions.md` added during setup
