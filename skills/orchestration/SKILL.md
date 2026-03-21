@@ -82,11 +82,7 @@ New task →
 3. **Dispatch** — Use delegation prompt template. Always include scope, success criteria, report format.
 4. **Review** — Read STATUS first. Spot-check if needed (`git diff`, tests). Decide: proceed, re-assign, or adjust.
 5. **Track** — Update state (done / pending / failed). Never skip to the next subtask without reviewing the current report.
-6. **Synthesize** — When all subtasks are done, produce one consolidated output for the user. Never surface raw agent output — always rewrite in your own words.
-   - Lead with issues: 🔴 critical (blocks merge/deploy) / 🟠 significant (should fix) / 🟡 minor (nice to have)
-   - Follow with overall status and a one-sentence verdict (what the user should do next)
-   - Include per-agent attribution only if it helps the user understand *who found what* — omit otherwise
-   - If any subtask is ❌: surface the blocker, hold the verdict until resolved
+6. **Synthesize** — When all subtasks are done, consolidate into one output for the user. Never surface raw agent output. Lead with issues (🔴 blocker / 🟠 should fix / 🟡 minor), then a one-sentence verdict on what to do next. If any subtask is ❌, hold the verdict until resolved.
 
 ## Delegation Prompt Template
 
