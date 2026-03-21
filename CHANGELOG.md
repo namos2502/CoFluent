@@ -2,7 +2,7 @@
 
 All notable changes to xFlow will be documented here.
 
-## [2.1.0] — 2026-03-19
+## [0.4.0] — 2026-03-19
 
 ### Added
 - `skills/claude-cli/SKILL.md` — programmatic reference for the Claude CLI; covers `claude -p` flags, tool permission syntax (`--allowedTools`, `--disallowedTools`, `--tools`), model selection, budget caps, and common invocation patterns for ask/suggest/explain/fix/review tasks
@@ -12,7 +12,7 @@ All notable changes to xFlow will be documented here.
 
 ---
 
-## [2.0.0] — 2026-03-19
+## [0.3.0-beta] — 2026-03-19
 
 ### Changed
 - Renamed project from **CoFluent** to **xFlow** — reflecting the broader multi-agent vision
@@ -23,7 +23,7 @@ All notable changes to xFlow will be documented here.
 
 ---
 
-## [1.0.1] — 2026-03-18
+## [0.2.0-beta] — 2026-03-18
 
 ### Added
 - `/xflow:setup` — one-time setup command that verifies Copilot CLI is installed and authenticated, then registers xFlow awareness in `~/.claude/CLAUDE.md` so Claude knows about xFlow in every future session (idempotent — safe to re-run)
@@ -32,9 +32,9 @@ All notable changes to xFlow will be documented here.
 ### Removed
 - `/xflow:verify` — absorbed into `/xflow:setup`; re-run setup anytime to re-check your installation
 
----
 
-## [1.0.0-beta] — 2026-03-18
+---
+## [0.1.0-beta] — 2026-03-18
 
 Initial beta release. Core plugin structure is stable; commands and skill reference are functional but may evolve based on feedback.
 
