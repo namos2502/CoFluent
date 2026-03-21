@@ -25,4 +25,5 @@ xFlow turns your active AI agent into a **control center** that decomposes tasks
 |---------|-------------|
 | `/xflow:setup` | Detect CLI agents, verify auth, register xFlow as always-on |
 | `/xflow:auto` | Load all skills and activate orchestration mode for this session |
+| `/xflow:cleanup` | Remove xFlow configuration added by setup |
 | `/xflow:help` | Show this information |
