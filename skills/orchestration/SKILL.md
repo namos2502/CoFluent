@@ -176,21 +176,7 @@ Fan out to multiple Agents in parallel when tasks are independent. Pass a report
 
 After all agent reports are received, produce a single consolidated output for the user. Never surface raw agent output — always synthesize.
 
-```
-**[Task / PR title]**
-
-| Agent   | Status | Key finding     |
-|---------|--------|-----------------|
-| Copilot | ✅     | <SUMMARY>       |
-| Claude  | ⚠️     | <SUMMARY>       |
-
-**Issues:**
-- 🔴 <critical>
-- 🟠 <significant>
-- 🟡 <minor>
-
-**Verdict:** <one sentence recommendation>
-```
+Lead with issues (🔴 critical / 🟠 significant / 🟡 minor), then a brief overall status and verdict. Only include a per-agent breakdown if knowing which agent found what adds meaningful context.
 
 ## Red Flags — STOP
 
