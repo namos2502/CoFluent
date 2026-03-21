@@ -2,6 +2,14 @@
 
 All notable changes to xFlow will be documented here.
 
+## [0.5.4] — 2026-03-21
+
+### Added
+- Task complexity scale (Simple / Standard / Complex) in orchestration skill — classifies tasks before routing to determine spec detail and delegation style
+- Effort threshold: Simple tasks stay inline or use native subagents — cross-CLI overhead is not justified for single-operation or read-only tasks
+- Q&A phase for Complex tasks — control center appends a 1-turn question block to the delegation prompt before execution; agent surfaces ambiguity, control center refines, then execution proceeds
+- Updated decision tree — checks task complexity before type; native subagent tier made explicit
+
 ## [0.5.3] — 2026-03-21
 
 ### Fixed
