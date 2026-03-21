@@ -63,12 +63,16 @@ Classify every task before routing. This determines how much spec detail to writ
 **Decision tree:**
 ```
 New task →
-  Simple (single op, read-only, unambiguous result)? → handle inline
-  Needs exploration, no platform CLI required? → native subagent
-  Standard + platform-specific? → cross-CLI with full spec
-  Complex + platform-specific? → cross-CLI with full spec + Q&A turn
-  Produces verbose output AND needs agent reasoning? → cross-CLI
+  Simple? → handle inline (no cross-CLI)
+  Host native subagent available? → use it (faster, no auth needed)
+  Platform-specific (GitHub, Anthropic API, etc.)? → cross-CLI
+  Context isolation needed (verbose output, long subtask)? → cross-CLI
+  Different model needed? → cross-CLI
   Default → handle inline
+
+  When going cross-CLI:
+    Standard → full spec (problem + acceptance criteria)
+    Complex → full spec + Q&A turn before execution
 ```
 
 ## Control Center Protocol
