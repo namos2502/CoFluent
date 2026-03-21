@@ -62,6 +62,8 @@ Then install xFlow from inside Claude Code:
 /reload-plugins
 ```
 
+> **Note:** If commands don't appear after `/reload-plugins`, restart Claude Code completely — a full restart is sometimes needed to pick up new commands.
+
 Then run setup once:
 
 ```
@@ -69,6 +71,24 @@ Then run setup once:
 ```
 
 This detects which CLI agents are installed, verifies authentication, and registers xFlow in your `~/.claude/CLAUDE.md` so it's active in every future session — no need to run anything again.
+
+## Updating
+
+To get the latest version:
+
+```
+/plugin marketplace update agent-plugins
+/plugin update xflow@agent-plugins
+```
+
+Then restart Claude Code to pick up any new or changed commands.
+
+## Uninstalling
+
+To remove xFlow completely:
+
+1. Run `/xflow:cleanup` — removes the xFlow sections added to `~/.claude/CLAUDE.md` and `~/.copilot/copilot-instructions.md`
+2. Run `/plugin uninstall xflow@agent-plugins` — removes the plugin files
 
 Requires Claude Code v1.0.33+.
 
