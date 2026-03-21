@@ -10,6 +10,9 @@ All notable changes to xFlow will be documented here.
 ### Changed
 - `/xflow:help` — simplified to plugin info and getting started guide; no longer shows internal skill structure
 
+### Fixed
+- `/xflow:help` — removed stray `---` from command body that was being parsed as a second frontmatter block, causing Claude to show its default greeting instead of the help content
+
 ## [0.5.0-beta]
 
 ### Changed — Breaking
