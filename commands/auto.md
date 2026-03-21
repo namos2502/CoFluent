@@ -2,6 +2,19 @@
 description: "Activate autonomous multi-agent mode — Claude will know when and how to invoke copilot -p or claude -p for the rest of this session"
 ---
 
+**Step 1 — Check if setup has been run:**
+
+Read `~/.claude/CLAUDE.md` and `~/.copilot/copilot-instructions.md`. Check whether each contains a `## xFlow` section.
+
+- If **neither** file has the section — stop and tell the user:
+  > ⚠️ xFlow is not set up yet. Run `/xflow:setup` first to detect your CLI agents and register xFlow, then run `/xflow:auto` again.
+
+- If **only one** file has the section — warn the user setup may be incomplete and suggest re-running `/xflow:setup`, then proceed to Step 2.
+
+- If **both** files have the section — proceed to Step 2.
+
+**Step 2 — Load skills and activate:**
+
 Read and load the following skill files into your context for this session:
 
 - `skills/orchestration/SKILL.md` — the control center orchestration protocol
