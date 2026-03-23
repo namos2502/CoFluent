@@ -21,3 +21,5 @@ Read `~/.copilot/copilot-instructions.md`. Find the `## xFlow` section using the
 **Step 3 — Confirm:**
 
 Report which files were updated and which were already clean. Remind the user to run `/plugin uninstall xflow` in Claude Code to fully remove the plugin.
+
+> **Known issue:** After uninstalling, xFlow commands may still appear until the session is restarted. `/reload-plugins` does not remove already-loaded plugins — a full session restart is required.
