@@ -32,6 +32,7 @@ user-invocable: false
 | `--output-format json` | Structured JSON with metadata |
 | `--no-session-persistence` | Do not save session to disk — keeps scripted calls clean |
 | `--max-turns N` | Cap agentic turns — prevents runaway tasks |
+| `--bare` | Minimal mode: skip auto-discovery of hooks, skills, plugins, MCP servers, auto memory, and CLAUDE.md so scripted calls start faster. Claude has access to Bash, file read, and file edit tools |
 
 ## Tool Permissions
 
@@ -57,6 +58,7 @@ Shell access (`Bash(...)`) is a separate, deliberate decision. Use `--disallowed
 | Flag | Purpose |
 |------|---------|
 | `--max-budget-usd N` | Cap API spend (e.g. `--max-budget-usd 0.50`) |
+| `--effort LEVEL` | Set the effort level: `low`, `medium`, `high`, `xhigh`, `max` — available levels depend on the model. Session-scoped, does not persist |
 | `--permission-mode plan` | Read-only planning mode — no writes or shell, overrides `--allowedTools` |
 | `--append-system-prompt "TEXT"` | Inject task-specific instructions into the system prompt |
 
