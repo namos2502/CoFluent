@@ -22,7 +22,7 @@ user-invocable: false
 
 | Flag | Purpose |
 |------|---------|
-| `-p "PROMPT"` | Programmatic mode — executes prompt and exits |
+| `-p "PROMPT"` | Prompt flag — executes prompt non-interactively and exits |
 | `--no-ask-user` | Suppresses interactive permission prompts — required for non-interactive use |
 | `--no-auto-update` | Prevents Copilot from updating itself mid-run |
 | `--no-color` | Clean output, no ANSI escape codes |

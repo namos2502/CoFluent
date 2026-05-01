@@ -23,7 +23,7 @@ escape_for_json() {
 
 orchestration_escaped=$(escape_for_json "$orchestration_content")
 
-peer_direction="PEER DIRECTION RULES (apply these every time you delegate):\n- If you are Claude Code (Claude): GitHub tasks → Copilot CLI. Isolated code/analysis tasks → Claude CLI (last resort only — prefer native tools first).\n- If you are Copilot CLI: code tasks, analysis, and refactors → Claude CLI.\n- ONE agent per subtask. Never route the same subtask to more than one agent.\n- Always use bash with -p flag (programmatic mode). Never open an interactive terminal session.\n- Violating any of these rules violates the spirit of CortexLink."
+peer_direction="PEER DIRECTION RULES (apply these every time you delegate):\n- If you are Claude Code (Claude): GitHub tasks → Copilot CLI. Isolated code/analysis tasks → Claude CLI (last resort only — prefer native tools first).\n- If you are Copilot CLI: code tasks, analysis, and refactors → Claude CLI.\n- ONE agent per subtask. Never route the same subtask to more than one agent.\n- Always use bash with -p (prompt flag). Never open an interactive terminal session.\n- Violating any of these rules violates the spirit of CortexLink."
 
 session_context="<EXTREMELY_IMPORTANT>\nYou have CortexLink — a cross-agent workflow plugin.\n\nBelow is your orchestration skill. It defines when and how to delegate tasks across CLI agents (Copilot CLI, Claude CLI). Follow it whenever multi-agent delegation could apply.\n\n${orchestration_escaped}\n\n${peer_direction}\n</EXTREMELY_IMPORTANT>"
 
