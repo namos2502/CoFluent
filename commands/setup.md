@@ -1,6 +1,6 @@
 ---
 description: "One-time setup — detects installed CLI agents, authenticates, and registers CortexLink as always-on in ~/.claude/CLAUDE.md and ~/.copilot/copilot-instructions.md"
-allowed-tools: Read, Edit, Bash
+allowed-tools: Read, Edit, Write, Bash
 ---
 
 Run the following steps in order and report the results clearly to the user.
@@ -33,7 +33,7 @@ Then ask the user to re-run `/cortexlink:setup` after installing at least one ag
 
 For Copilot CLI (if installed):
 ```bash
-copilot -p "ping" --no-ask-user --no-auto-update --no-color --allow-tool='read' --model=claude-haiku-4.5 2>/dev/null
+cd $(git rev-parse --show-toplevel) && copilot -p "ping" --no-ask-user --no-auto-update --no-color --allow-tool='read' --model=claude-haiku-4.5 2>/dev/null
 ```
 If this fails, tell the user to run `copilot login`.
 

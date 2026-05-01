@@ -114,6 +114,7 @@ New task →
 | General code task | Claude CLI — load `cortexlink:claude-cli` via the Skill tool |
 | Delegation prompt | See `references/delegation-template.md` |
 | Report format / self-verify | See `references/report-format.md` |
+| Agent context protocol | See `references/agent-context.md` |
 | Add a new agent | Drop `skills/agents/<name>/SKILL.md` — follow existing format |
 | Handle auth failure | Tell user: `/cortexlink:setup` |
 | Handle ❌ report | Read ISSUES. Re-assign or handle natively. Never retry blindly. |

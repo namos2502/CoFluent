@@ -62,7 +62,7 @@ All notable changes to CortexLink will be documented here.
 ### Fixed
 - `/cortexlink:help` — removed stray `---` from command body that was being parsed as a second frontmatter block, causing Claude to show its default greeting instead of the help content
 
-## [0.5.0-beta]
+## [0.5.0-beta] — 2026-03-21
 
 ### Changed — Breaking
 - **Architecture:** Complete redesign from passive flag-reference plugin to active control center orchestration system
