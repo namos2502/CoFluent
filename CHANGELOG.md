@@ -2,6 +2,18 @@
 
 All notable changes to CortexLink will be documented here.
 
+## [0.6.5] — 2026-05-04
+
+### Changed
+- **Orchestration:** Major rewrite — native Agent tool promoted as first choice over cross-CLI; parallelism made the explicit default for independent subtasks
+- **Orchestration:** Added "Concurrency First" section — default parallel, serialize only on output dependency
+- **Orchestration:** Added "Concurrency Primitives" table — names `Agent` multi-call, `Agent` + `run_in_background: true`, and shell `&` patterns with correct tool targets
+- **Orchestration:** Iron Law updated — added `INDEPENDENT SUBTASKS RUN IN PARALLEL` and `PREFER NATIVE SUBAGENTS` rules
+- **Orchestration:** Control Center Protocol — Dispatch step rewritten (fixes incorrect `run_in_background` on Bash); new "Useful-wait" step added
+- **Orchestration:** Red Flags expanded; new "Green Flags" section added
+- **Orchestration:** Quick Reference updated — native subagent rows added, cross-CLI rows clarified as last resort
+- **Delegation template:** Cross-Agent Chaining section rewritten — correct parallel patterns for native Agent tool and cross-CLI `& wait`
+
 ## [0.6.4] — 2026-05-04
 
 ### Changed
