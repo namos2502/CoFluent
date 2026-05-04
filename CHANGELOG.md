@@ -2,6 +2,11 @@
 
 All notable changes to CortexLink will be documented here.
 
+## [0.6.3] — 2026-05-04
+
+### Changed
+- **Skills/Commands:** Hardcoded model version IDs removed across `copilot-cli` skill, `claude-cli` skill, `doctor` command, and `orchestration` report-format reference — replaced with `<fastest-available>` / `<capable-model>` placeholders and a note to run `copilot models` / `claude models` to get current names
+
 ## [0.6.2] — 2026-05-04
 
 ### Fixed
