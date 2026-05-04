@@ -2,6 +2,13 @@
 
 All notable changes to CortexLink will be documented here.
 
+## [0.6.6] — 2026-05-04
+
+### Changed
+- **Orchestration:** Restored dropped rules — Two-Tier Model now notes cross-CLI agents are "full CLI agents, not dumb executors"; "Width scales, depth stays fixed" architecture note restored
+- **Orchestration:** Dispatch step explicitly restates "always include scope, success criteria, and report format" (was previously only implied by template reference)
+- **Delegation template:** "Do not let each agent re-fetch the same data independently" restored as explicit prohibition
+
 ## [0.6.5] — 2026-05-04
 
 ### Changed

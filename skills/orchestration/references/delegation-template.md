@@ -39,4 +39,4 @@ Fan out to independent subtasks in parallel — do not serialize by default.
 
 Pass a report excerpt (SUMMARY + STEPS) as context into dependent delegation prompts — never raw output. Agents do not chain to each other; all coordination happens at the control center.
 
-**Avoid duplicate fetches:** When multiple agents need the same source data (e.g. a PR diff, a file's contents), fetch it once in the control center and pass it as `[Context]` in each delegation prompt.
+**Avoid duplicate fetches:** When multiple agents need the same source data (e.g. a PR diff, a file's contents), fetch it once in the control center and pass it as `[Context]` in each delegation prompt. Do not let each agent re-fetch the same data independently.

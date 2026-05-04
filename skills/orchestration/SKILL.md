@@ -37,7 +37,7 @@ CONTROL CENTER (your AI agent — decomposes, routes, reviews)
         └── [own tools & sub-agents — internal, platform-native]
 ```
 
-The control center IS your active AI agent — it holds the plan and directs the work. Native subagents (Agent tool) are the first choice: no auth, no process overhead, full tool access. Cross-CLI agents are for platform-specific work only. The tree is one level deep: agents are peers, they don't chain to each other.
+The control center IS your active AI agent — it holds the plan and directs the work. Native subagents (Agent tool) are the first choice: no auth, no process overhead, full tool access. Cross-CLI agents are full CLI agents in their own right — not dumb executors — but are for platform-specific work only. The tree is one level deep: agents are peers, they don't chain to each other. Width scales as you add agents; depth stays fixed.
 
 ## Task Complexity
 
@@ -115,7 +115,7 @@ New task →
 
 1. **Decompose** — Break into scoped, independently executable subtasks. Each must be verifiable by the agent itself. After decomposing, identify which subtasks are independent — these are your parallel batch.
 2. **Route** — Apply decision tree. Prefer native Agent tool. Check CLI agent availability only if cross-CLI is needed (see `references/report-format.md`).
-3. **Dispatch** — Batch all independent subtasks into ONE message. For native subagents: emit multiple `Agent` tool calls in one response. For cross-CLI: background with shell `&` in a single `Bash` call, write output to temp files. Use delegation prompt template for cross-CLI (see `references/delegation-template.md`). Each subtask goes to ONE agent — never dispatch the same work to two agents.
+3. **Dispatch** — Batch all independent subtasks into ONE message. For native subagents: emit multiple `Agent` tool calls in one response. For cross-CLI: background with shell `&` in a single `Bash` call, write output to temp files. Use delegation prompt template for cross-CLI (see `references/delegation-template.md`); always include scope, success criteria, and report format. Each subtask goes to ONE agent — never dispatch the same work to two agents.
 4. **Useful-wait** — While background agents run, do prep work for synthesis or the next subtask. Never idle-block when there is useful work to do.
 5. **Review** — Read STATUS first. Spot-check if needed (`git diff`, tests). Decide: proceed, re-assign, or adjust.
 6. **Track** — Update state (done / pending / failed). Never skip to the next subtask without reviewing the current report.
